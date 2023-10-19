@@ -36,8 +36,8 @@ namespace OrangeHRMTests.PageObjects
             EmployeeNameHintedTextBoxElement.SendKeys("111 222");
             CreatedEmployeeListFirstPosition.Click();
             PageObjects.Buttons.Buttons.ClickSearchButton();
-            TrashButton.Click();
-            YesDeleteButton.Click();
+            PageObjects.Buttons.Buttons.ClickTrashButton();
+            PageObjects.Buttons.Buttons.ClickConfirmDeletionButton();
         }
 
         public LeftMenuNavigationPanel LeftMenuNavigationPanel => new LeftMenuNavigationPanel();
