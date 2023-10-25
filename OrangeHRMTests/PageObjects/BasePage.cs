@@ -16,19 +16,19 @@ namespace OrangeHRMTests.PageObjects
         private MyWebElement CreatedEmployeeListFirstPosition = new MyWebElement(By.XPath("//div[@role='listbox']/div[1]/span"));
         private MyWebElement EmployeeNameHintedTextBoxElement = new MyWebElement(By.XPath("//label[@class='oxd-label'][text()='Employee Name']//ancestor::div[1]//following-sibling::div[1]//input"));
         //private MyWebElement SearchButton = new MyWebElement(By.XPath("//button[@type='submit'][text()=' Search ']"));
-        private MyWebElement TrashButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash']"));
-        private MyWebElement YesDeleteButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash oxd-button-icon']"));
+        //private MyWebElement TrashButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash']"));
+        //private MyWebElement YesDeleteButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash oxd-button-icon']"));
 
-        public const string XPathToTableCell = "(//div[@class='oxd-table-card']//div[@role='row'])[1]//div[@role='cell'][count(//div[text()='{0}']//preceding-sibling::div)+1]";
+        //public const string XPathToTableCell = "(//div[@class='oxd-table-card']//div[@role='row'])[1]//div[@role='cell'][count(//div[text()='{0}']//preceding-sibling::div)+1]";
 
-        public string GetCellText(string value)
-        {
-            var cellXPath = string.Format(XPathToTableCell, value);
-            var element = new MyWebElement(By.XPath(cellXPath));
-            var text = element.Text;
+        //public string GetCellText(string value)
+        //{
+        //    var cellXPath = string.Format(XPathToTableCell, value);
+        //    var element = new MyWebElement(By.XPath(cellXPath));
+        //    var text = element.Text;
 
-            return text;
-        }
+        //    return text;
+        //}
 
         public void DeleteCreatedUser()
         {

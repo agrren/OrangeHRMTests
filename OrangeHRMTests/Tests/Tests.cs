@@ -5,6 +5,7 @@ using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.Data.Constants;
 using OrangeHRMTests.PageObjects;
 using OrangeHRMTests.PageObjects.Buttons;
+using OrangeHRMTests.PageObjects.Elements;
 
 namespace OrangeHRMTests.Tests
 {
@@ -56,10 +57,10 @@ namespace OrangeHRMTests.Tests
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
 
-            var username = GenericPages.BasePage.GetCellText("Username");
-            var userRole = GenericPages.BasePage.GetCellText("User Role");
-            var employeename = GenericPages.BasePage.GetCellText("Employee Name");
-            var userStatus = GenericPages.BasePage.GetCellText("Status");
+            var username = Tables.GetCellText("Username");
+            var userRole = Tables.GetCellText("User Role");
+            var employeename = Tables.GetCellText("Employee Name");
+            var userStatus = Tables.GetCellText("Status");
 
             Assert.AreEqual("Admin", GenericPages.AdminPage.ReturnAdminPageHeaderPartOneTextResult());
             Assert.AreEqual("User Management", GenericPages.AdminPage.ReturnAdminPageHeaderPartTwoTextResult());
@@ -73,10 +74,10 @@ namespace OrangeHRMTests.Tests
             GenericPages.AdminUserManagement.ChooseUserStatus();
             Buttons.ClickSearchButton();
 
-            Assert.AreEqual(username, GenericPages.BasePage.GetCellText("Username"));
-            Assert.AreEqual(userRole, GenericPages.BasePage.GetCellText("User Role"));
-            Assert.AreEqual(employeename, GenericPages.BasePage.GetCellText("Employee Name"));
-            Assert.AreEqual(userStatus, GenericPages.BasePage.GetCellText("Status"));
+            Assert.AreEqual(username, Tables.GetCellText("Username"));
+            Assert.AreEqual(userRole, Tables.GetCellText("User Role"));
+            Assert.AreEqual(employeename, Tables.GetCellText("Employee Name"));
+            Assert.AreEqual(userStatus, Tables.GetCellText("Status"));
         }
 
         [Test]
@@ -121,16 +122,16 @@ namespace OrangeHRMTests.Tests
             GenericPages.PerformancePage.EnterKeyMinimumRating();
             Buttons.ClickSaveButton();
 
-            Assert.AreEqual("111", GenericPages.PerformancePage.ReturnKeyPerformanceIndicatorTextResult());
-            Assert.AreEqual("IT Manager", GenericPages.PerformancePage.ReturnJobTitleTextResult());
-            Assert.AreEqual("1", GenericPages.PerformancePage.ReturnMinRateTextResult());
+            Assert.AreEqual("111", Tables.GetCellText("Key Performance Indicator"));
+            Assert.AreEqual("IT Manager", Tables.GetCellText("Job Title"));
+            Assert.AreEqual("1", Tables.GetCellText("Min Rate"));
 
             Buttons.ClickTrashButton();
             Buttons.ClickConfirmDeletionButton();
 
-            Assert.AreNotEqual("111", GenericPages.PerformancePage.ReturnKeyPerformanceIndicatorTextResult());
-            Assert.AreNotEqual("IT Manager", GenericPages.PerformancePage.ReturnJobTitleTextResult());
-            Assert.AreNotEqual("1", GenericPages.PerformancePage.ReturnMinRateTextResult());
+            Assert.AreNotEqual("111", Tables.GetCellText("Key Performance Indicator"));
+            Assert.AreNotEqual("IT Manager", Tables.GetCellText("Job Title"));
+            Assert.AreNotEqual("1", Tables.GetCellText("Min Rate"));
         }
 
         [Test]
@@ -153,20 +154,20 @@ namespace OrangeHRMTests.Tests
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
 
             GenericPages.AdminPage.ClickNationalitiesButton();
-            var nationality = GenericPages.AdminPage.ReturnEditedNationalityNameTextBoxElement();
+            var nationality = Tables.GetCellText("Nationality");
             GenericPages.AdminPage.ClickEditButton();
             GenericPages.AdminPage.ClearNationalityName();
             GenericPages.AdminPage.EnterNationalityName("111");
             Buttons.ClickSaveButton();
 
-            Assert.AreEqual("111", GenericPages.AdminPage.ReturnEditedNationalityNameTextBoxElement());
+            Assert.AreEqual("111", Tables.GetCellText("Nationality"));
 
             GenericPages.AdminPage.ClickEditButton();
             GenericPages.AdminPage.ClearNationalityName();
             GenericPages.AdminPage.EnterNationalityName(nationality);
             Buttons.ClickSaveButton();
 
-            Assert.AreEqual(nationality, GenericPages.AdminPage.ReturnEditedNationalityNameTextBoxElement());
+            Assert.AreEqual(nationality, Tables.GetCellText("Nationality"));
         }
 
         [Test]
@@ -185,14 +186,14 @@ namespace OrangeHRMTests.Tests
             GenericPages.RecruitmentPage.ClickVacanciesButton();
 
 
-            Assert.AreEqual("111", GenericPages.BasePage.GetCellText("Vacancy"));
-            Assert.AreEqual("IT Manager", GenericPages.BasePage.GetCellText("Job Title"));
-            Assert.AreEqual("Active", GenericPages.BasePage.GetCellText("Status"));
+            Assert.AreEqual("111", Tables.GetCellText("Vacancy"));
+            Assert.AreEqual("IT Manager", Tables.GetCellText("Job Title"));
+            Assert.AreEqual("Active", Tables.GetCellText("Status"));
 
             Buttons.ClickTrashButton();
             Buttons.ClickConfirmDeletionButton();
 
-            Assert.AreNotEqual("111", GenericPages.BasePage.GetCellText("Vacancy"));
+            Assert.AreNotEqual("111", Tables.GetCellText("Vacancy"));
         }
 
         [Test]
@@ -246,7 +247,7 @@ namespace OrangeHRMTests.Tests
             GenericPages.LeavePage.ClickCreatedEmployeeFirstPosition();
             Buttons.ClickSearchButton();
 
-            Assert.AreEqual("111 222 333", GenericPages.BasePage.GetCellText("Employee Name"));
+            Assert.AreEqual("111 222 333", Tables.GetCellText("Employee Name"));
 
             GenericPages.BasePage.DeleteCreatedUser();
 
