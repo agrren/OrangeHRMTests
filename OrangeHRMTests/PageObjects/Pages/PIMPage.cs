@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OrangeHRMTests.Common.WebElements;
+using OrangeHRMTests.PageObjects.Elements;
 
 namespace OrangeHRMTests.PageObjects.Pages
 {
@@ -12,20 +13,14 @@ namespace OrangeHRMTests.PageObjects.Pages
         private MyWebElement AddedFirstAndMiddleNameTextBox = new MyWebElement(By.XPath("//div[@class='oxd-table-body']/div[1]/div[1]/div[3]"));
         private MyWebElement AddedLastNameTextBox = new MyWebElement(By.XPath("//div[@class='oxd-table-body']/div[1]/div[1]/div[4]"));
         private MyWebElement SaveTwoButton = new MyWebElement(By.XPath("//form[@class='oxd-form']/div[5]/button"));
-        private MyWebElement EmployeeListButton = new MyWebElement(By.XPath("//a[contains(text(), 'Employee List')]"));
+        //private MyWebElement EmployeeListButton = new MyWebElement(By.XPath("//a[contains(text(), 'Employee List')]"));
         private MyWebElement EmployeeNameHintedTextBoxElement = new MyWebElement(By.XPath("//label[@class='oxd-label'][text()='Employee Name']//ancestor::div[1]//following-sibling::div[1]//input"));
 
         public string FullUserName = "//input[@placeholder='{0}']";
 
-        public void EnterUserName(string field, string value)
-        {
-            {
-                var element = new MyWebElement(By.XPath(string.Format(FullUserName, field)));
-                element.SendKeys(value);
-            }
-        }
-
-        public void ClickEmployeeListButton() => EmployeeListButton.Click();
+        public void EnterUserName(string field, string value) => new MyWebElement(By.XPath(string.Format(FullUserName, field))).SendKeys(value);
+        
+        public void ClickEmployeeListButton() => TopbarMenu.ClickTopbarMenuButtonByName("Employee List");
 
         public void EnterFirstName() => EnterUserName(ReturnNameFirstPart(),"111");
 

@@ -1,10 +1,5 @@
 ﻿using NUnit.Framework;
-using OrangeHRMTests.Common.Drivers;
-using OrangeHRMTests.Common.Extensions;
-using OrangeHRMTests.Common.Extensions.ExtensionMethods;
-using OrangeHRMTests.Data.Constants;
 using OrangeHRMTests.PageObjects;
-using OrangeHRMTests.PageObjects.Buttons;
 using OrangeHRMTests.PageObjects.Elements;
 
 namespace OrangeHRMTests.Tests
@@ -126,7 +121,7 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("IT Manager", Tables.GetCellText("Job Title"));
             Assert.AreEqual("1", Tables.GetCellText("Min Rate"));
 
-            Buttons.ClickTrashButton();
+            Tables.ClickTrashButton();
             Buttons.ClickConfirmDeletionButton();
 
             Assert.AreNotEqual("111", Tables.GetCellText("Key Performance Indicator"));
@@ -155,14 +150,14 @@ namespace OrangeHRMTests.Tests
 
             GenericPages.AdminPage.ClickNationalitiesButton();
             var nationality = Tables.GetCellText("Nationality");
-            GenericPages.AdminPage.ClickEditButton();
+            Tables.ClickPencilEditButton();
             GenericPages.AdminPage.ClearNationalityName();
             GenericPages.AdminPage.EnterNationalityName("111");
             Buttons.ClickSaveButton();
 
             Assert.AreEqual("111", Tables.GetCellText("Nationality"));
 
-            GenericPages.AdminPage.ClickEditButton();
+            Tables.ClickPencilEditButton();
             GenericPages.AdminPage.ClearNationalityName();
             GenericPages.AdminPage.EnterNationalityName(nationality);
             Buttons.ClickSaveButton();
@@ -190,7 +185,7 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("IT Manager", Tables.GetCellText("Job Title"));
             Assert.AreEqual("Active", Tables.GetCellText("Status"));
 
-            Buttons.ClickTrashButton();
+            Tables.ClickTrashButton();
             Buttons.ClickConfirmDeletionButton();
 
             Assert.AreNotEqual("111", Tables.GetCellText("Vacancy"));
@@ -232,7 +227,7 @@ namespace OrangeHRMTests.Tests
             GenericPages.LeavePage.ClickFromDateCalendarValueButton();
             GenericPages.LeavePage.ClickToDateCalendarButton();
             GenericPages.LeavePage.ClickToDateCalendarValueButton();
-            GenericPages.LeavePage.ClickAssignButton();
+            Buttons.ClickSaveButton();
             //Implementation of wait while element appears - was discussed
             string ReturnSuccessfullySavedMessageTextResult() => GenericPages.LeavePage.SuccessfullySavedMessageTextElement.Text;
             Assert.AreEqual("Successfully Saved", ReturnSuccessfullySavedMessageTextResult());
@@ -241,7 +236,7 @@ namespace OrangeHRMTests.Tests
             GenericPages.LeavePage.ClickLeaveListButton();
             GenericPages.LeavePage.ClickShowLeaveWithStatusTypeArrowButton();
             GenericPages.LeavePage.ChooseShowLeaveWithStatusType();
-            GenericPages.LeavePage.ClickLeaveTypeArrowButton();
+            GenericPages.LeavePage.ClickNotRequiredLeaveTypeArrowButton();
             GenericPages.LeavePage.ChooseLeaveType();
             GenericPages.LeavePage.EnterEmployeeName();
             GenericPages.LeavePage.ClickCreatedEmployeeFirstPosition();

@@ -31,7 +31,7 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void EnterKeyMinimumRating() => EnterKeyPerformanceIndicatorFieldByName("Minimum Rating", "1");
 
-        public void ClickJobTitleDropdownArrowButton() => Buttons.Buttons.ClickRequieredDropDownListArrowButtonByName("Job Title");
+        public void ClickJobTitleDropdownArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Job Title");
 
         public void ChooseJobTitle() => DropdownExtension.ClickDropdownList("IT Manager");
 

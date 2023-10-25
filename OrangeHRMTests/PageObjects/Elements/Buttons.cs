@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrangeHRMTests.PageObjects.Buttons
+namespace OrangeHRMTests.PageObjects.Elements
 {
     public static class Buttons
     {
@@ -14,7 +14,7 @@ namespace OrangeHRMTests.PageObjects.Buttons
         private static MyWebElement SaveButton = new MyWebElement(By.XPath("//button[@type='submit']"));
         private static MyWebElement ConfirmDeletionButton = new MyWebElement(By.XPath("//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']"));
         private static MyWebElement SearchButton = new MyWebElement(By.XPath("//button[@type='submit'][text()=' Search ']"));
-        private static MyWebElement TrashButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash']"));
+        //private static MyWebElement TrashButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash']"));
         //private static MyWebElement YesDeleteButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-trash oxd-button-icon']"));
 
         public static string DropDownListArrowButtonByName = "//label[@class='oxd-label'][text()='{0}']//ancestor::div[1]//following-sibling::div[1]//i";
@@ -40,6 +40,6 @@ namespace OrangeHRMTests.PageObjects.Buttons
 
         public static void ClickConfirmDeletionButton() => ConfirmDeletionButton.Click();
 
-        public static void ClickTrashButton() => TrashButton.Click();
+        //public static void ClickTrashButton() => TrashButton.Click();
     }
 }

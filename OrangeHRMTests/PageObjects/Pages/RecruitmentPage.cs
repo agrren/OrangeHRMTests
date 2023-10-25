@@ -24,7 +24,7 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void ClickVacanciesButton() => TopbarMenu.ClickTopbarMenuButtonByName("Vacancies");
 
-        public void ClickJobTitleDropdownArrowButton() => Buttons.Buttons.ClickRequieredDropDownListArrowButtonByName("Job Title");
+        public void ClickJobTitleDropdownArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Job Title");
 
         public void ClickHiringManagerTextBoxElement() => HiringManagerTextBoxElement.Click();
 

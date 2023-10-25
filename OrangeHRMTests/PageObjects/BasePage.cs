@@ -3,7 +3,7 @@ using OrangeHRMTests.Common.Drivers;
 using OrangeHRMTests.Common.WebElements;
 using OrangeHRMTests.Data;
 using OrangeHRMTests.PageObjects.Modules;
-using OrangeHRMTests.PageObjects.Buttons;
+using OrangeHRMTests.PageObjects.Elements;
 
 namespace OrangeHRMTests.PageObjects
 {
@@ -35,9 +35,9 @@ namespace OrangeHRMTests.PageObjects
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
             EmployeeNameHintedTextBoxElement.SendKeys("111 222");
             CreatedEmployeeListFirstPosition.Click();
-            PageObjects.Buttons.Buttons.ClickSearchButton();
-            PageObjects.Buttons.Buttons.ClickTrashButton();
-            PageObjects.Buttons.Buttons.ClickConfirmDeletionButton();
+            Elements.Buttons.ClickSearchButton();
+            Elements.Tables.ClickTrashButton();
+            Elements.Buttons.ClickConfirmDeletionButton();
         }
 
         public LeftMenuNavigationPanel LeftMenuNavigationPanel => new LeftMenuNavigationPanel();

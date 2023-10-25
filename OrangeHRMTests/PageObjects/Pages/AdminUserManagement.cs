@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.Common.WebElements;
+using OrangeHRMTests.PageObjects.Elements;
 
 namespace OrangeHRMTests.PageObjects.Pages
 {
@@ -13,9 +14,9 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void EnterUserName() => UserNameTextBox.SendKeys(Elements.Tables.GetCellText("Username"));
 
-        public void ClickUserRoleDropdownArrow() => Buttons.Buttons.ClickDropDownListArrowButtonByName("User Role");
+        public void ClickUserRoleDropdownArrow() => Buttons.ClickDropDownListArrowButtonByName("User Role");
 
-        public void ClickUserStatusDropdownArrow() => Buttons.Buttons.ClickDropDownListArrowButtonByName("Status");
+        public void ClickUserStatusDropdownArrow() => Buttons.ClickDropDownListArrowButtonByName("Status");
 
         public void EnterEmployeeName() => EmployeeNameTextBox.SendKeys(Elements.Tables.GetCellText("Employee Name"));
 
