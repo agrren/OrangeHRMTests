@@ -12,12 +12,9 @@ namespace OrangeHRMTests.PageObjects
         public static SupportPage SupportPage => GetPage<SupportPage>();
         public static AdminPage AdminPage => GetPage<AdminPage>();
         public static AdminUserManagement AdminUserManagement => GetPage<AdminUserManagement>();
-        public static AddUserPage AddUserPage => GetPage<AddUserPage>();
         public static PIMPage PIMPage => GetPage<PIMPage>();
         public static PerformancePage PerformancePage => GetPage<PerformancePage>();
         public static RecruitmentPage RecruitmentPage => GetPage<RecruitmentPage>();
-
-        //public static Buttons Buttons => GetPage<Buttons>();
 
         public static LeavePage LeavePage => GetPage<LeavePage>();
 

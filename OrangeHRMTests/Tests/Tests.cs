@@ -133,7 +133,6 @@ namespace OrangeHRMTests.Tests
         public void H_AdminFunctionalityTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
-
             GenericPages.AdminPage.ClickUserManagementDropdownButton();
 
             Assert.AreEqual("Users", GenericPages.AdminPage.ReturnUsersDropdownElementText());
@@ -152,14 +151,14 @@ namespace OrangeHRMTests.Tests
             var nationality = Tables.GetCellText("Nationality");
             Tables.ClickPencilEditButton();
             GenericPages.AdminPage.ClearNationalityName();
-            GenericPages.AdminPage.EnterNationalityName("111");
+            GenericPages.AdminPage.EnterNationalityName();
             Buttons.ClickSaveButton();
 
             Assert.AreEqual("111", Tables.GetCellText("Nationality"));
 
             Tables.ClickPencilEditButton();
             GenericPages.AdminPage.ClearNationalityName();
-            GenericPages.AdminPage.EnterNationalityName(nationality);
+            GenericPages.AdminPage.EnterNationalityNameBack(nationality);
             Buttons.ClickSaveButton();
 
             Assert.AreEqual(nationality, Tables.GetCellText("Nationality"));
@@ -194,14 +193,7 @@ namespace OrangeHRMTests.Tests
         [Test]
         public void K_AssignLeaveTest()
         {
-            GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
-            Buttons.ClickAddButton();
-            GenericPages.PIMPage.EnterFirstName();
-            GenericPages.PIMPage.EnterMiddleName();
-            GenericPages.PIMPage.EnterLastName();
-            GenericPages.PIMPage.ClickSaveOneButton();
-            GenericPages.PIMPage.ClickSaveTwoButton();
-            GenericPages.PIMPage.ClickEmployeeListButton();
+            GenericPages.BasePage.CreateEmployee();
 
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToLeavePage();
             GenericPages.LeavePage.ClickEntitlementsButton();
@@ -245,13 +237,46 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("111 222 333", Tables.GetCellText("Employee Name"));
 
             GenericPages.BasePage.DeleteCreatedUser();
+        }
 
-            //GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
-            //GenericPages.PIMPage.EnterEmployeeNameHintedTextBoxElement();
-            //GenericPages.LeavePage.ClickCreatedEmployeeFirstPosition();
-            //GenericPages.LeavePage.ClickSearchButton();
-            //GenericPages.PIMPage.ClickTrashButton();
-            //GenericPages.PIMPage.ClickYesDeleteButton();
+        [Test]
+        public void L_AddJobTitleTest()
+        {
+            GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
+            GenericPages.AdminPage.ClickJobDropdownButton();
+            GenericPages.AdminPage.ClickJobTitlesDropdownButton();
+            Buttons.ClickAddButton();
+            GenericPages.AdminPage.EnterJobTitleName();
+            Buttons.ClickSaveButton();
+
+            Assert.AreEqual("111", Tables.GetCellText("Job Titles"));
+
+            Tables.ClickTrashButton();
+            Buttons.ClickConfirmDeletionButton();
+
+            Assert.AreNotEqual("111", Tables.GetCellText("Job Titles"));
+        }
+
+        [Test]
+        public void M_SearchEmployeeTest()
+        {
+            GenericPages.BasePage.CreateEmployee();
+
+            GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
+            GenericPages.PIMPage.ClickEmployeeListButton();
+            GenericPages.PIMPage.EnterCreatedEmployeeNameTextBoxElement();
+            GenericPages.PIMPage.ClickCreatedEmployeeFirstPosition();
+            Buttons.ClickSearchButton();
+
+            Assert.AreEqual("111 222", Tables.GetCellText("First (& Middle) Name"));
+
+            GenericPages.PIMPage.ClearEmployeeNameTextBoxElement();
+            GenericPages.PIMPage.EnterUnvalidEmployeeNameTextBoxElement();
+            Buttons.ClickSearchButton();
+
+            Assert.AreNotEqual("111 222", Tables.GetCellText("First (& Middle) Name"));
+
+            GenericPages.BasePage.DeleteCreatedUser();
         }
     }
 }

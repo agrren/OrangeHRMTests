@@ -2,11 +2,6 @@
 using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.Common.WebElements;
 using OrangeHRMTests.PageObjects.Elements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrangeHRMTests.PageObjects.Pages
 {
@@ -22,7 +17,7 @@ namespace OrangeHRMTests.PageObjects.Pages
         public string DropDownListMultiselect = "//div[@class='oxd-multiselect-wrapper']/div[2]//*[contains(text(),'{0}')]";
 
         public void ClickDropdownList(string value) => new MyWebElement(By.XPath(string.Format(DropDownListMultiselect, value))).Click();
-        
+
         public void ClickAssignLeaveButton() => TopbarMenu.ClickTopbarMenuButtonByName("Assign Leave");
 
         public void ClickEntitlementsButton() => TopbarMenu.ClickTopbarMenuButtonByName("Entitlements ");
@@ -39,8 +34,6 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void ClickLeaveListButton() => TopbarMenu.ClickTopbarMenuButtonByName("Leave List");
 
-        //public void ClickSearchButton() => SearchButton.Click();
-
         public void ClickLeaveTypeArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Leave Type");
 
         public void ClickNotRequiredLeaveTypeArrowButton() => Buttons.ClickDropDownListArrowButtonByName("Leave Type");
@@ -48,8 +41,6 @@ namespace OrangeHRMTests.PageObjects.Pages
         public void ClickShowLeaveWithStatusTypeArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Show Leave with Status");
 
         public void ClickConfirmButton() => ConfirmButton.Click();
-
-        //public void ClickAssignButton() => AssignButton.Click();
 
         public void EnterEmployeeName() => Fields.EnterValueInInputTextField("Employee Name", "111");
 

@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OrangeHRMTests.Common.Drivers;
 using OrangeHRMTests.Common.WebElements;
 
