@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium.Support.UI;
 using OrangeHRMTests.PageObjects;
 using OrangeHRMTests.PageObjects.Elements;
 
@@ -80,9 +81,7 @@ namespace OrangeHRMTests.Tests
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
             Buttons.ClickAddButton();
-            GenericPages.PIMPage.EnterFirstName();
-            GenericPages.PIMPage.EnterMiddleName();
-            GenericPages.PIMPage.EnterLastName();
+            GenericPages.PIMPage.EnterFullUserName();
             GenericPages.PIMPage.ClickSaveOneButton();
             GenericPages.PIMPage.ClickSaveTwoButton();
             GenericPages.PIMPage.ClickEmployeeListButton();
@@ -274,7 +273,36 @@ namespace OrangeHRMTests.Tests
             GenericPages.PIMPage.EnterUnvalidEmployeeNameTextBoxElement();
             Buttons.ClickSearchButton();
 
-            Assert.AreNotEqual("111 222", Tables.GetCellText("First (& Middle) Name"));
+            Assert.AreEqual("No Records Found", GenericPages.InfoMessage.ReturnInfoMessageTextResult());
+
+            GenericPages.BasePage.DeleteCreatedUser();
+        }
+
+        [Test]
+        public void N_EditEmployeeDetailsTest()
+        {
+            GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
+            GenericPages.PIMPage.ClickEmployeeListButton();
+            Tables.ClickPencilEditButton();
+            //GenericPages.PIMPage.ClickFirstName();
+            //GenericPages.PIMPage.ClearFirstName();
+            //Assert.AreEqual("Required", GenericPages.PIMPage.FirstNameRequiredText());
+            //GenericPages.PIMPage.ClearMiddleName();
+            //GenericPages.PIMPage.ClearLastName();
+            //GenericPages.PIMPage.ClearFullUserName();
+            GenericPages.PIMPage.ClearFullUserName();
+            //TimeSpan.FromMilliseconds(5000);
+            //Assert.AreEqual("Required", GenericPages.PIMPage.LastNameRequiredText());
+            GenericPages.PIMPage.EnterFullUserName();
+            GenericPages.PIMPage.ClickSaveOneButton();
+            GenericPages.PIMPage.ClickSaveTwoButton();
+            GenericPages.PIMPage.ClickEmployeeListButton();
+            GenericPages.PIMPage.EnterCreatedEmployeeNameTextBoxElement();
+            GenericPages.PIMPage.ClickCreatedEmployeeFirstPosition();
+            Buttons.ClickSearchButton();
+
+            Assert.AreEqual("111 222", Tables.GetCellText("First (& Middle) Name"));
+            Assert.AreEqual("333", Tables.GetCellText("Last Name"));
 
             GenericPages.BasePage.DeleteCreatedUser();
         }

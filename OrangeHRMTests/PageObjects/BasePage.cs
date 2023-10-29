@@ -16,9 +16,7 @@ namespace OrangeHRMTests.PageObjects
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
             Buttons.ClickAddButton();
-            GenericPages.PIMPage.EnterFirstName();
-            GenericPages.PIMPage.EnterMiddleName();
-            GenericPages.PIMPage.EnterLastName();
+            GenericPages.PIMPage.EnterFullUserName();
             GenericPages.PIMPage.ClickSaveOneButton();
             GenericPages.PIMPage.ClickSaveTwoButton();
             GenericPages.PIMPage.ClickEmployeeListButton();

@@ -15,6 +15,7 @@ namespace OrangeHRMTests.PageObjects
         public static PIMPage PIMPage => GetPage<PIMPage>();
         public static PerformancePage PerformancePage => GetPage<PerformancePage>();
         public static RecruitmentPage RecruitmentPage => GetPage<RecruitmentPage>();
+        public static InfoMessage InfoMessage => GetPage<InfoMessage>();
 
         public static LeavePage LeavePage => GetPage<LeavePage>();
 
