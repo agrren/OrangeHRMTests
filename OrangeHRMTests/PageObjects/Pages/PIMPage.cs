@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OrangeHRMTests.Common.Extensions;
+using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.Common.WebElements;
 using OrangeHRMTests.PageObjects.Elements;
 
@@ -10,20 +11,40 @@ namespace OrangeHRMTests.PageObjects.Pages
         private MyWebElement SaveOneButton = new MyWebElement(By.XPath("//button[@type='submit']"));
         private MyWebElement SaveTwoButton = new MyWebElement(By.XPath("//form[@class='oxd-form']/div[5]/button"));
         private MyWebElement CreatedEmployeeListFirstPosition = new MyWebElement(By.XPath("//div[@role='listbox']/div[1]/span"));
-        
+        private MyWebElement PersonalDetailsHeader = new MyWebElement(By.XPath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title']"));
+        private MyWebElement AddedCustomFieldName = new MyWebElement(By.XPath("//h6[text()='Custom Fields']//following-sibling::form[1]//label[@class='oxd-label']"));
+
         public string FullUserName = "//label[text()='Employee Full Name']//ancestor::div[1]//following-sibling::div[1]//input[@name='{0}']";
-        
+
         public string ReturnFirstAndMiddleNameTextResult() => Tables.GetCellText("First (& Middle) Name");
 
         public string ReturnLastNameTextResult() => Tables.GetCellText("Last Name");
 
         public void EnterUserName(string field, string value) => new MyWebElement(By.XPath(string.Format(FullUserName, field))).SendKeys(value);
 
+        public void ChoseScreen()
+        {
+            Buttons.ClickRequieredDropDownListArrowButtonByName("Screen");
+            DropdownExtension.ClickDropdownList("Personal Details");
+        }
+
+        public void ChoseType()
+        {
+            Buttons.ClickRequieredDropDownListArrowButtonByName("Type");
+            DropdownExtension.ClickDropdownList("Text or Number");
+        }
+
         public void ClickEmployeeListButton() => TopbarMenu.ClickTopbarMenuButtonByName("Employee List");
+
+        public void ClickConfugurationButton() => TopbarMenu.ClickTopbarMenuButtonByName("Configuration ");
+
+        public void ClickCustomFieldsButton() => TopbarMenu.ClickTopbarMenuButtonByName("Custom Fields");
 
         public void ClickCreatedEmployeeFirstPosition() => CreatedEmployeeListFirstPosition.Click();
 
         public void ClickUserName(string field) => new MyWebElement(By.XPath(string.Format(FullUserName, field))).Click();
+
+        public void ClickEmployeeLastName() => Tables.ClickTableCellByName("Last Name");
 
         public void ClearFullUserName()
         {
@@ -46,10 +67,20 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void EnterUnvalidEmployeeNameTextBoxElement() => Fields.EnterValueInInputTextField("Employee Name", "123456");
 
+        public void EnterFieldNameTextBoxElement() => Fields.EnterValueInInputTextField("Field Name", "111");
+
+        public void EnterCreatedCustomFieldValueTextBoxElement() => Fields.EnterValueInInputTextField("111", "111");
+
         public void ClickSaveOneButton() => SaveOneButton.Click();
 
         public void ClickSaveTwoButton() => SaveTwoButton.Click();
 
         public void ClearEmployeeNameTextBoxElement() => Fields.EnterValueInInputTextField("Employee Name", Keys.Control + "a" + Keys.Delete);
+
+        public string ReturnPersonalDetailsHeaderTextElement() => PersonalDetailsHeader.Text;
+
+        public string ReturnAddedCustomFieldNameTextElement() => AddedCustomFieldName.Text;
+
+        public void ClearCreatedCustomFieldTextBoxElement() => Fields.EnterValueInInputTextField("111", Keys.Control + "a" + Keys.Delete);
     }
 }

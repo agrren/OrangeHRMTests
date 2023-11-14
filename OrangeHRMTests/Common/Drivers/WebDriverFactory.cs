@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using OrangeHRMTests.Data;
@@ -42,6 +43,7 @@ namespace OrangeHRMTests.Common.Drivers
             {
                 Browsers.Chrome => new ChromeDriver(),
                 Browsers.Edge => new EdgeDriver(),
+                Browsers.Mozilla => new FirefoxDriver(),
                 _ => throw new InvalidOperationException(),
             };
 

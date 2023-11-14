@@ -22,7 +22,21 @@ namespace OrangeHRMTests.PageObjects
             GenericPages.PIMPage.ClickEmployeeListButton();
         }
 
-        public void DeleteCreatedUser()
+        public void CreateUser()
+        {
+            GenericPages.AdminPage.ClickUserRoleDropdownArrowButton();
+            GenericPages.AdminPage.ChooseUserRole();
+            GenericPages.AdminPage.ClickStatusDropdownArrowButton();
+            GenericPages.AdminPage.ChooseUserStatus();
+            GenericPages.PIMPage.EnterCreatedEmployeeNameTextBoxElement();
+            GenericPages.PIMPage.ClickCreatedEmployeeFirstPosition();
+            GenericPages.AdminPage.EnterUserNameTextBoxElement();
+            GenericPages.AdminPage.EnterPasswordTextBoxElement();
+            GenericPages.AdminPage.EnterConfirmPasswordTextBoxElement();
+            Buttons.ClickSaveButton();
+        }
+
+        public void DeleteCreatedEmployee()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
             EmployeeNameHintedTextBoxElement.SendKeys("111 222");

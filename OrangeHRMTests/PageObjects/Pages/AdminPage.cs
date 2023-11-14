@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.Common.WebElements;
 using OrangeHRMTests.PageObjects.Elements;
 
@@ -17,9 +18,15 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void ClickJobDropdownButton() => TopbarMenu.ClickTopbarMenuButtonByName("Job ");
 
+        public void ClickUsersDropdownButton() => TopbarMenu.ClickTopbarMenuButtonByName("Users");
+
         public void ClickJobTitlesDropdownButton() => TopbarMenu.ClickTopbarMenuButtonByName("Job Titles");
 
         public void ClickNationalitiesButton() => TopbarMenu.ClickTopbarMenuButtonByName("Nationalities");
+
+        public void ClickUserRoleDropdownArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("User Role");
+
+        public void ClickStatusDropdownArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Status");
 
         public void ClearNationalityName() => Fields.EnterValueInInputTextField("Name", Keys.Control + "a" + Keys.Delete);
 
@@ -28,6 +35,12 @@ namespace OrangeHRMTests.PageObjects.Pages
         public void EnterNationalityNameBack(string value) => EditNationalityNameTextBoxElement.SendKeys(value);
 
         public void EnterJobTitleName() => Fields.EnterValueInInputTextField("Job Title", "111");
+
+        public void EnterUserNameTextBoxElement() => Fields.EnterValueInInputTextField("Username", "111admin");
+
+        public void EnterPasswordTextBoxElement() => Fields.EnterValueInInputTextField("Password", "qwerty123");
+
+        public void EnterConfirmPasswordTextBoxElement() => Fields.EnterValueInInputTextField("Confirm Password", "qwerty123");
 
         public string ReturnAdminPageHeaderPartOneTextResult() => AdminPageHeaderElementPartOne.Text;
 
@@ -38,5 +51,13 @@ namespace OrangeHRMTests.PageObjects.Pages
         public string ReturnUsersDropdownElementText() => UsersDropdownElement.Text;
 
         public string ReturnJobTitleDropdownElementText() => JobTitleDropdownElement.Text;
+
+        public string ReturnEmployeeNameTableTextElement() => Tables.ReturnValueOfTextFieldByName("Employee Name");
+
+        public string ReturnJobTitleNameTextResult() => Tables.ReturnValueOfTextFieldByName("Job Titles");
+
+        public void ChooseUserRole() => DropdownExtension.ClickDropdownList("Admin");
+
+        public void ChooseUserStatus() => DropdownExtension.ClickDropdownList("Enabled");
     }
 }
