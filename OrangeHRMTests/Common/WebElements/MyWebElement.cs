@@ -76,7 +76,7 @@ namespace OrangeHRMTests.Common.WebElements
             return element;
         }
 
-        public static IWebElement FindElementByXPath(string value) 
+        public static IWebElement FindElementByXPath(string value)
         {
             var element = WebDriverFactory.Driver.GetWebDriverWait().Until(drv => drv.FindElement(By.XPath(value)));
 

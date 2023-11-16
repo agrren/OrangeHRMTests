@@ -10,6 +10,7 @@ namespace OrangeHRMTests.PageObjects.Elements
         private static MyWebElement TrashButton = new MyWebElement(By.XPath("(//div[@class='oxd-table-card']//div[@role='row'])[1]//div[@role='cell'][count(//div[text()='Actions']//preceding-sibling::div)+1]//i[@class='oxd-icon bi-trash']"));
         private static MyWebElement TableCheckboxElement = new MyWebElement(By.XPath("(//div[@class='oxd-table-card']//div[@role='row'])[1]//div[@role='cell']//i[@class='oxd-icon bi-check oxd-checkbox-input-icon']"));
 
+
         public static string GetCellText(string value) => new MyWebElement(By.XPath(string.Format(XPathToTableCell, value))).Text;
 
         public static void ClickPencilEditButton() => PencilEditButton.Click();

@@ -13,6 +13,9 @@ namespace OrangeHRMTests.PageObjects.Pages
         private MyWebElement CreatedEmployeeListFirstPosition = new MyWebElement(By.XPath("//div[@role='listbox']/div[1]/span"));
         private MyWebElement PersonalDetailsHeader = new MyWebElement(By.XPath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title']"));
         private MyWebElement AddedCustomFieldName = new MyWebElement(By.XPath("//h6[text()='Custom Fields']//following-sibling::form[1]//label[@class='oxd-label']"));
+        private MyWebElement QualificationsButton = new MyWebElement(By.XPath("//*[text()='Qualifications']"));
+        private MyWebElement AddSkillsButton = new MyWebElement(By.XPath("//*[text()='Skills']//following-sibling::button"));
+        private MyWebElement SkillsTableTrashButton = new MyWebElement(By.XPath("//*[text()='Skills']//ancestor::div[2]//following-sibling::div[2]//i[@class='oxd-icon bi-trash']"));
 
         public string FullUserName = "//label[text()='Employee Full Name']//ancestor::div[1]//following-sibling::div[1]//input[@name='{0}']";
 
@@ -45,6 +48,12 @@ namespace OrangeHRMTests.PageObjects.Pages
         public void ClickUserName(string field) => new MyWebElement(By.XPath(string.Format(FullUserName, field))).Click();
 
         public void ClickEmployeeLastName() => Tables.ClickTableCellByName("Last Name");
+
+        public void ClickQualificationsButton() => QualificationsButton.Click();
+
+        public void ClickAddSkillsButton() => AddSkillsButton.Click();
+
+        public void ClickSkillsTableTrashButton () => SkillsTableTrashButton.Click();
 
         public void ClearFullUserName()
         {

@@ -1,6 +1,6 @@
 {
   "Common": {
-    "Browser": "Chrome",
+    "Browser": "Mozilla",
     "Urls": {
       "Page": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
     }
