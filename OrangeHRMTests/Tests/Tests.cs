@@ -2,6 +2,8 @@
 using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.PageObjects;
 using OrangeHRMTests.PageObjects.Elements;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
 
 namespace OrangeHRMTests.Tests
 {
@@ -80,12 +82,10 @@ namespace OrangeHRMTests.Tests
         public void E_PIMPageAddEmployeeTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
-            //TimeSpan.FromMilliseconds(30000);
+            //GenericPages.BasePage.WaitForLoaderDisappear();
             Buttons.ClickAddButton();
-            //TimeSpan.FromMilliseconds(30000);
+            //GenericPages.BasePage.WaitForLoaderDisappear();
             GenericPages.PIMPage.EnterFullUserName();
-            //Buttons.ClickSaveButton();
-            //TimeSpan.FromMilliseconds(30000);
             GenericPages.PIMPage.ClickSaveOneButton();
             GenericPages.PIMPage.ClickSaveTwoButton();
             GenericPages.PIMPage.ClickEmployeeListButton();

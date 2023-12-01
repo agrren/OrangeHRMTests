@@ -1,12 +1,14 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OrangeHRMTests.Common.Drivers;
+using OrangeHRMTests.Common.WebElements;
+using System;
 
 namespace OrangeHRMTests.Common.Extensions
 {
     public static class WebDriverExtensions
     {
-        public static WebDriverWait GetWebDriverWait(this IWebDriver driver, int timeoutSeconds = 30, TimeSpan? pollingInterval = null, params Type[] exceptionTypes)
+        public static WebDriverWait GetWebDriverWait(this IWebDriver driver, int timeoutSeconds = 15, TimeSpan? pollingInterval = null, params Type[] exceptionTypes)
         {
             var webDriverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutSeconds));
             if (pollingInterval != null)

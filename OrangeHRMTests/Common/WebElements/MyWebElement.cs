@@ -3,6 +3,7 @@ using OrangeHRMTests.Common.Drivers;
 using OrangeHRMTests.Common.Extensions;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using OpenQA.Selenium.Support.UI;
 
 namespace OrangeHRMTests.Common.WebElements
 {
@@ -31,9 +32,17 @@ namespace OrangeHRMTests.Common.WebElements
             By = by;
         }
 
-        public void Clear() => WebElement.Clear();
+        public void Clear()
+        {
+            Waiter();
+            WebElement.Clear();
+        }//=> WebElement.Clear();
 
-        public void SendKeys(string text) => WebElement.SendKeys(text);
+        public void SendKeys(string text) 
+        {
+            Waiter();
+            WebElement.SendKeys(text);
+        }//=> WebElement.SendKeys(text);
 
         public void Submit() => WebElement.Submit();
 
@@ -41,11 +50,13 @@ namespace OrangeHRMTests.Common.WebElements
         {
             try
             {
+                Waiter();
                 WebElement.Click();
             }
             catch (ElementClickInterceptedException)
             {
                 ScrollIntoView();
+                Waiter();
                 WebElement.Click();
             }
         }
@@ -64,9 +75,12 @@ namespace OrangeHRMTests.Common.WebElements
 
         public ReadOnlyCollection<IWebElement> FindElements(By by) => WebElement.FindElements(by);
 
-        public void ScrollIntoView() => WebDriverFactory.JavaScriptExecutor.ExecuteScript("arguments[0].scrollIntoView()", WebElement);
+        public void ScrollIntoView() => WebDriverFactory.JavaScriptExecutor.ExecuteScript("arguments[0].scrollIntoView();", WebElement);
 
         public string GetValueOfClassAtrubute() => GetAttribute("class");
+
+        public static WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromMilliseconds(5000));
+        public static void Waiter() => wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='oxd-form-loader']")));
 
         public static IWebElement FindElementByXPathId(string value)
         {

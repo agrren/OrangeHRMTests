@@ -28,7 +28,11 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void ClickStatusDropdownArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Status");
 
-        public void ClearNationalityName() => Fields.EnterValueInInputTextField("Name", Keys.Control + "a" + Keys.Delete);
+        public void ClearNationalityName() 
+        {
+            MyWebElement.Waiter();
+            Fields.EnterValueInInputTextField("Name", Keys.Control + "a" + Keys.Delete);
+        }//=> Common.WebElements.MyWebElement.Waiter().Fields.EnterValueInInputTextField("Name", Keys.Control + "a" + Keys.Delete);
 
         public void EnterNationalityName() => Fields.EnterValueInInputTextField("Name", "111");
 

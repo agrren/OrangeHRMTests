@@ -5,7 +5,7 @@ namespace OrangeHRMTests.PageObjects.Elements
 {
     public static class Buttons
     {
-        private static MyWebElement AddButton = new MyWebElement(By.XPath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']"));
+        private static MyWebElement AddButton = new MyWebElement(By.XPath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary'][text()=' Add ']"));
         private static MyWebElement SaveButton = new MyWebElement(By.XPath("//button[@type='submit']"));
         private static MyWebElement ConfirmDeletionButton = new MyWebElement(By.XPath("//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin']"));
         private static MyWebElement SearchButton = new MyWebElement(By.XPath("//button[@type='submit'][text()=' Search ']"));
