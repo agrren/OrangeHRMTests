@@ -6,7 +6,6 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using OrangeHRMTests.Data;
 using OrangeHRMTests.Data.Enums;
-using System;
 using System.Collections.Concurrent;
 
 namespace OrangeHRMTests.Common.Drivers

@@ -6,17 +6,14 @@ namespace OrangeHRMTests.PageObjects.Pages
     public class DashboardPage : BasePage
     {
         private MyWebElement ArrowButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']"));
-        private MyWebElement TimeAtWorkTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[1]/div[1]/div[1]/div[1]/p"));
-        private MyWebElement MyActionTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[2]/div[1]/div[1]/div[1]/p"));
-        private MyWebElement QuickLaunchTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[3]/div[1]/div[1]/div[1]/p"));
-        private MyWebElement BuzzLatestPostTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[4]/div[1]/div[1]/div[1]/p"));
-        private MyWebElement OnLeaveTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[5]/div[1]/div[1]/div[1]/p"));
-        private MyWebElement BySubUnitTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[6]/div[1]/div[1]/div[1]/p"));
-        private MyWebElement ByLocationTextElement = new MyWebElement(By.XPath("//div[@class='oxd-grid-3 orangehrm-dashboard-grid']/div[7]/div[1]/div[1]/div[1]/p"));
         private MyWebElement WheelButton = new MyWebElement(By.XPath("//i[@class='oxd-icon bi-gear-fill orangehrm-leave-card-icon']"));
         private MyWebElement ConfigurationsTextElement = new MyWebElement(By.XPath("//p[@class='oxd-text oxd-text--p oxd-text--card-title']"));
         private MyWebElement CrossButton = new MyWebElement(By.XPath("//button[@class='oxd-dialog-close-button oxd-dialog-close-button-position']"));
         private MyWebElement CancelButton = new MyWebElement(By.XPath("//button[@class='oxd-button oxd-button--medium oxd-button--ghost']"));
+
+        public string HeaderByName = "//p[@class='oxd-text oxd-text--p'][text()='{0}']";
+
+        public string ReturnTextResultByName(string field) => new MyWebElement(By.XPath(string.Format(HeaderByName, field))).Text;
 
         public void ClickArrowButton() => ArrowButton.Click();
 
@@ -26,19 +23,19 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void ClickCancelButton() => CancelButton.Click();
 
-        public string ReturnTimeAtWorkTextResult() => TimeAtWorkTextElement.Text;
+        public string ReturnTimeAtWorkTextResult() => ReturnTextResultByName("Time at Work");
 
-        public string ReturnMyActionTextResult() => MyActionTextElement.Text;
+        public string ReturnMyActionTextResult() => ReturnTextResultByName("My Actions");
 
-        public string ReturnQuckLaunchTextResult() => QuickLaunchTextElement.Text;
+        public string ReturnQuckLaunchTextResult() => ReturnTextResultByName("Quick Launch");
 
-        public string ReturnBuzzLatestPostTextResult() => BuzzLatestPostTextElement.Text;
+        public string ReturnBuzzLatestPostTextResult() => ReturnTextResultByName("Buzz Latest Posts");
 
-        public string ReturnOnLeaveTextResult() => OnLeaveTextElement.Text;
+        public string ReturnOnLeaveTextResult() => ReturnTextResultByName("Employees on Leave Today");
 
-        public string ReturnBySubUnitTextResult() => BySubUnitTextElement.Text;
+        public string ReturnBySubUnitTextResult() => ReturnTextResultByName("Employee Distribution by Sub Unit");
 
-        public string ReturnByLocationTextResult() => ByLocationTextElement.Text;
+        public string ReturnByLocationTextResult() => ReturnTextResultByName("Employee Distribution by Location");
 
         public string ReturnConfigTextResult() => ConfigurationsTextElement.GetAttribute("innerText");
     }

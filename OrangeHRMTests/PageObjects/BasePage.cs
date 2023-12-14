@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using OrangeHRMTests.Common.Drivers;
-using OrangeHRMTests.Common.Extensions;
 using OrangeHRMTests.Common.WebElements;
 using OrangeHRMTests.Data;
 using OrangeHRMTests.PageObjects.Elements;
@@ -12,8 +10,8 @@ namespace OrangeHRMTests.PageObjects
     public class BasePage : WebDriverFactory
     {
         private MyWebElement CreatedEmployeeListFirstPosition = new MyWebElement(By.XPath("//div[@role='listbox']/div[1]/span"));
-        private MyWebElement EmployeeNameHintedTextBoxElement = new MyWebElement(By.XPath("//label[@class='oxd-label'][text()='Employee Name']//ancestor::div[1]//following-sibling::div[1]//input"));
-        private MyWebElement InnerLoader = new MyWebElement(By.XPath("//div[@class='oxd-form-loader']"));
+        private MyWebElement EmployeeNameHintedTextBoxElement = new MyWebElement(By.XPath("//label[@class='oxd-label'][text()='Employee Name']//ancestor::div[1]" +
+            "//following-sibling::div[1]//input"));
 
         public void CreateEmployee()
         {

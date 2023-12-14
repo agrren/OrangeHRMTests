@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OrangeHRMTests.Common.Extensions;
 using OrangeHRMTests.Common.Extensions.ExtensionMethods;
 using OrangeHRMTests.Common.WebElements;
 using OrangeHRMTests.PageObjects.Elements;
@@ -15,7 +14,12 @@ namespace OrangeHRMTests.PageObjects.Pages
         private MyWebElement AddedCustomFieldName = new MyWebElement(By.XPath("//h6[text()='Custom Fields']//following-sibling::form[1]//label[@class='oxd-label']"));
         private MyWebElement QualificationsButton = new MyWebElement(By.XPath("//*[text()='Qualifications']"));
         private MyWebElement AddSkillsButton = new MyWebElement(By.XPath("//*[text()='Skills']//following-sibling::button"));
-        private MyWebElement SkillsTableTrashButton = new MyWebElement(By.XPath("//*[text()='Skills']//ancestor::div[2]//following-sibling::div[2]//i[@class='oxd-icon bi-trash']"));
+        private MyWebElement SkillsTableTrashButton = new MyWebElement(By.XPath("//*[text()='Skills']//ancestor::div[2]//following-sibling::div[2]" +
+            "//i[@class='oxd-icon bi-trash']"));
+        private MyWebElement ImployeeInformationText = new MyWebElement(By.XPath("//h5[@class='oxd-text oxd-text--h5 oxd-table-filter-title']" +
+            "[text()='Employee Information']"));
+        private MyWebElement CustomFieldsText = new MyWebElement(By.XPath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()='Custom Fields']"));
+        private MyWebElement NoRecordsFoundText = new MyWebElement(By.XPath("//span[@class='oxd-text oxd-text--span'][text()='No Records Found']"));
 
         public string FullUserName = "//label[text()='Employee Full Name']//ancestor::div[1]//following-sibling::div[1]//input[@name='{0}']";
 
@@ -89,6 +93,12 @@ namespace OrangeHRMTests.PageObjects.Pages
         public string ReturnPersonalDetailsHeaderTextElement() => PersonalDetailsHeader.Text;
 
         public string ReturnAddedCustomFieldNameTextElement() => AddedCustomFieldName.Text;
+
+        public string ReturnImployeeInformationText() => ImployeeInformationText.Text;
+
+        public string ReturnCustomFieldsText() => CustomFieldsText.Text;
+
+        public string ReturnNoRecordsFoundText() => NoRecordsFoundText.Text;
 
         public void ClearCreatedCustomFieldTextBoxElement() => Fields.EnterValueInInputTextField("111", Keys.Control + "a" + Keys.Delete);
     }

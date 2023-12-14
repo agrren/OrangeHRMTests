@@ -9,7 +9,6 @@ namespace OrangeHRMTests.PageObjects
     {
         private MyWebElement UserNameField = new MyWebElement(By.XPath("//*[@name='username']"));
         private MyWebElement PassWordField = new MyWebElement(By.XPath("//*[@name='password']"));
-        //private MyWebElement LoginButton = new MyWebElement(By.XPath("//*[@type='submit']"));
         private MyWebElement InvalidMessageTextElement = new MyWebElement(By.XPath("//p[@class='oxd-text oxd-text--p oxd-alert-content-text']"));
         private MyWebElement LogoutButton = new MyWebElement(By.XPath("//a[@href='/web/index.php/auth/logout']"));
         private MyWebElement ForgotPasswordButton = new MyWebElement(By.XPath("//*[text()='Forgot your password? ']"));

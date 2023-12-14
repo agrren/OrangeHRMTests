@@ -15,7 +15,11 @@ namespace OrangeHRMTests.Common.WebElements
 
         public string TagName => WebElement.TagName;
 
-        public string Text => WebElement.Text;
+        public string Text
+        {
+            set { Waiter(); }
+            get { return WebElement.Text; }
+        }//=> WebElement.Text;
 
         public bool Enabled => WebElement.Enabled;
 
@@ -61,6 +65,19 @@ namespace OrangeHRMTests.Common.WebElements
             }
         }
 
+        public void ClickWW()
+        {
+            try
+            {
+                WebElement.Click();
+            }
+            catch (ElementClickInterceptedException)
+            {
+                ScrollIntoView();
+                WebElement.Click();
+            }
+        }
+
         public string GetAttribute(string attributeName) => WebElement.GetAttribute(attributeName);
 
         public string GetDomAttribute(string attributeName) => WebElement.GetDomAttribute(attributeName);
@@ -79,22 +96,7 @@ namespace OrangeHRMTests.Common.WebElements
 
         public string GetValueOfClassAtrubute() => GetAttribute("class");
 
-        public static WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromMilliseconds(5000));
+        public static WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromMilliseconds(15000));
         public static void Waiter() => wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='oxd-form-loader']")));
-
-        public static IWebElement FindElementByXPathId(string value)
-        {
-            string xPath = string.Format("//*[@id='{0}']", value);
-            var element = WebDriverFactory.Driver.GetWebDriverWait().Until(drv => drv.FindElement(By.XPath(xPath)));
-
-            return element;
-        }
-
-        public static IWebElement FindElementByXPath(string value)
-        {
-            var element = WebDriverFactory.Driver.GetWebDriverWait().Until(drv => drv.FindElement(By.XPath(value)));
-
-            return element;
-        }
     }
 }

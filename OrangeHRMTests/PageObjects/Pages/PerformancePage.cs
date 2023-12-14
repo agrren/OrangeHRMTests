@@ -5,7 +5,7 @@ namespace OrangeHRMTests.PageObjects.Pages
 {
     public class PerformancePage : BasePage
     {
-        public void ClickConfigureButton() => TopbarMenu.ClickTopbarMenuButtonByName("Configure");
+        public void ClickConfigureButton() => TopbarMenu.ClickTopbarMenuButtonByName("Configure ");
 
         public void ClickKPIsButton() => TopbarMenu.ClickTopbarMenuButtonByName("KPIs");
 

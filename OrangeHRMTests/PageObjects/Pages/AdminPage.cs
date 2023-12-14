@@ -13,6 +13,9 @@ namespace OrangeHRMTests.PageObjects.Pages
         private MyWebElement UsersDropdownElement = new MyWebElement(By.XPath("//ul[@class='oxd-dropdown-menu']"));
         private MyWebElement JobTitleDropdownElement = new MyWebElement(By.XPath("//ul[@class='oxd-dropdown-menu']//*[contains(text(),'Job Titles')]"));
         private MyWebElement EditNationalityNameTextBoxElement = new MyWebElement(By.XPath("//div[@class='oxd-input-group oxd-input-field-bottom-space']//input"));
+        private MyWebElement JobTitlesText = new MyWebElement(By.XPath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()='Job Titles']"));
+        private MyWebElement NationalitiesText = new MyWebElement(By.XPath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()='Nationalities']"));
+        private MyWebElement EditNationalityText = new MyWebElement(By.XPath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title'][text()='Edit Nationality']"));
 
         public void ClickUserManagementDropdownButton() => TopbarMenu.ClickTopbarMenuButtonByName("User Management ");
 
@@ -32,7 +35,7 @@ namespace OrangeHRMTests.PageObjects.Pages
         {
             MyWebElement.Waiter();
             Fields.EnterValueInInputTextField("Name", Keys.Control + "a" + Keys.Delete);
-        }//=> Common.WebElements.MyWebElement.Waiter().Fields.EnterValueInInputTextField("Name", Keys.Control + "a" + Keys.Delete);
+        }
 
         public void EnterNationalityName() => Fields.EnterValueInInputTextField("Name", "111");
 
@@ -59,6 +62,12 @@ namespace OrangeHRMTests.PageObjects.Pages
         public string ReturnEmployeeNameTableTextElement() => Tables.ReturnValueOfTextFieldByName("Employee Name");
 
         public string ReturnJobTitleNameTextResult() => Tables.ReturnValueOfTextFieldByName("Job Titles");
+
+        public string ReturnJobTitlesText() => JobTitlesText.Text;
+
+        public string ReturnNationalitiesText() => NationalitiesText.Text;
+
+        public string ReturnEditNationalitiyText() => EditNationalityText.Text;
 
         public void ChooseUserRole() => DropdownExtension.ClickDropdownList("Admin");
 

@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
 using OrangeHRMTests.Common.Extensions.ExtensionMethods;
+using OrangeHRMTests.Data.Constants;
 using OrangeHRMTests.PageObjects;
 using OrangeHRMTests.PageObjects.Elements;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
 
 namespace OrangeHRMTests.Tests
 {
@@ -14,6 +13,7 @@ namespace OrangeHRMTests.Tests
         {
             GenericPages.DashboardPage.ClickArrowButton();
             GenericPages.AboutPage.ClickAboutButton();
+
             Assert.AreEqual("About", GenericPages.AboutPage.ReturnAboutNameTextResult());
             Assert.AreEqual("OrangeHRM OS 5.5", GenericPages.AboutPage.ReturnAboutVersionTextResult());
 
@@ -25,6 +25,7 @@ namespace OrangeHRMTests.Tests
         {
             GenericPages.DashboardPage.ClickArrowButton();
             GenericPages.SupportPage.ClickSupport();
+
             Assert.AreEqual("Getting Started with OrangeHRM", GenericPages.SupportPage.ReturnSupportTitleTextResult());
         }
 
@@ -32,6 +33,7 @@ namespace OrangeHRMTests.Tests
         public void C_DashboardPageTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToDashboardPage();
+
             Assert.AreEqual("Time at Work", GenericPages.DashboardPage.ReturnTimeAtWorkTextResult());
             Assert.AreEqual("My Actions", GenericPages.DashboardPage.ReturnMyActionTextResult());
             Assert.AreEqual("Quick Launch", GenericPages.DashboardPage.ReturnQuckLaunchTextResult());
@@ -41,10 +43,12 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("Employee Distribution by Location", GenericPages.DashboardPage.ReturnByLocationTextResult());
 
             GenericPages.DashboardPage.ClickWheelButton();
+
             Assert.AreEqual("Configurations", GenericPages.DashboardPage.ReturnConfigTextResult());
 
             GenericPages.DashboardPage.ClickCrossButton();
             GenericPages.DashboardPage.ClickWheelButton();
+
             Assert.AreEqual("Configurations", GenericPages.DashboardPage.ReturnConfigTextResult());
 
             GenericPages.DashboardPage.ClickCancelButton();
@@ -82,9 +86,8 @@ namespace OrangeHRMTests.Tests
         public void E_PIMPageAddEmployeeTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
-            //GenericPages.BasePage.WaitForLoaderDisappear();
+
             Buttons.ClickAddButton();
-            //GenericPages.BasePage.WaitForLoaderDisappear();
             GenericPages.PIMPage.EnterFullUserName();
             GenericPages.PIMPage.ClickSaveOneButton();
             GenericPages.PIMPage.ClickSaveTwoButton();
@@ -111,6 +114,7 @@ namespace OrangeHRMTests.Tests
         public void G_PerformanceManagementTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPerformancePage();
+
             GenericPages.PerformancePage.ClickConfigureButton();
             GenericPages.PerformancePage.ClickKPIsButton();
             Buttons.ClickAddButton();
@@ -136,6 +140,7 @@ namespace OrangeHRMTests.Tests
         public void H_AdminFunctionalityTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
+
             GenericPages.AdminPage.ClickUserManagementDropdownButton();
 
             Assert.AreEqual("Users", GenericPages.AdminPage.ReturnUsersDropdownElementText());
@@ -151,8 +156,14 @@ namespace OrangeHRMTests.Tests
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
 
             GenericPages.AdminPage.ClickNationalitiesButton();
+
+            Assert.AreEqual("Nationalities", GenericPages.AdminPage.ReturnNationalitiesText());
+
             var nationality = Tables.GetCellText("Nationality");
             Tables.ClickPencilEditButton();
+
+            Assert.AreEqual("Edit Nationality", GenericPages.AdminPage.ReturnEditNationalitiyText());
+
             GenericPages.AdminPage.ClearNationalityName();
             GenericPages.AdminPage.EnterNationalityName();
             Buttons.ClickSaveButton();
@@ -160,6 +171,9 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("111", Tables.GetCellText("Nationality"));
 
             Tables.ClickPencilEditButton();
+
+            Assert.AreEqual("Edit Nationality", GenericPages.AdminPage.ReturnEditNationalitiyText());
+
             GenericPages.AdminPage.ClearNationalityName();
             GenericPages.AdminPage.EnterNationalityNameBack(nationality);
             Buttons.ClickSaveButton();
@@ -171,7 +185,11 @@ namespace OrangeHRMTests.Tests
         public void J_RecruitmentManagementFunctionalityTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToRecruitmentPage();
+
             GenericPages.RecruitmentPage.ClickVacanciesButton();
+
+            Assert.AreEqual("Vacancies", GenericPages.RecruitmentPage.VacanciesTextResult());
+
             Buttons.ClickAddButton();
             GenericPages.RecruitmentPage.EnterVacancyName();
             GenericPages.RecruitmentPage.ClickJobTitleDropdownArrowButton();
@@ -182,7 +200,7 @@ namespace OrangeHRMTests.Tests
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToRecruitmentPage();
             GenericPages.RecruitmentPage.ClickVacanciesButton();
 
-
+            Assert.AreEqual("Vacancies", GenericPages.RecruitmentPage.VacanciesTextResult());
             Assert.AreEqual("111", Tables.GetCellText("Vacancy"));
             Assert.AreEqual("IT Manager", Tables.GetCellText("Job Title"));
             Assert.AreEqual("Active", Tables.GetCellText("Status"));
@@ -199,8 +217,12 @@ namespace OrangeHRMTests.Tests
             GenericPages.BasePage.CreateEmployee();
 
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToLeavePage();
+
             GenericPages.LeavePage.ClickEntitlementsButton();
             GenericPages.LeavePage.ClickAddEntitlementsButton();
+
+            Assert.AreEqual("Add Leave Entitlement", GenericPages.LeavePage.ReturnAddLeaveEntitlementText());
+
             GenericPages.LeavePage.EnterEmployeeName();
             GenericPages.LeavePage.ClickCreatedEmployeeFirstPosition();
             GenericPages.LeavePage.ClickLeaveTypeArrowButton();
@@ -210,14 +232,18 @@ namespace OrangeHRMTests.Tests
             GenericPages.LeavePage.ClickConfirmButton();
 
             GenericPages.LeavePage.ClickAssignLeaveButton();
+
+            Assert.AreEqual("Assign Leave", GenericPages.LeavePage.ReturnAssignLeaveText());
+
             GenericPages.LeavePage.EnterEmployeeName();
             GenericPages.LeavePage.ClickCreatedEmployeeFirstPosition();
             GenericPages.LeavePage.ClickLeaveTypeArrowButton();
             GenericPages.LeavePage.ChooseLeaveType();
             //Implementation of wait while element appears - was discussed
             string ReturnLeaveBalanceTextResult() => GenericPages.LeavePage.LeaveBalanceTextElement.Text;
+
             Assert.AreEqual("10.00 Day(s)", ReturnLeaveBalanceTextResult());
-            //
+
             GenericPages.LeavePage.ClickFromDateCalendarButton();
             GenericPages.LeavePage.ClickFromDateCalendarValueButton();
             GenericPages.LeavePage.ClickToDateCalendarButton();
@@ -225,8 +251,8 @@ namespace OrangeHRMTests.Tests
             Buttons.ClickSaveButton();
             //Implementation of wait while element appears - was discussed
             string ReturnSuccessfullySavedMessageTextResult() => GenericPages.LeavePage.SuccessfullySavedMessageTextElement.Text;
+
             Assert.AreEqual("Successfully Saved", ReturnSuccessfullySavedMessageTextResult());
-            //
 
             GenericPages.LeavePage.ClickLeaveListButton();
             GenericPages.LeavePage.ClickShowLeaveWithStatusTypeArrowButton();
@@ -246,8 +272,12 @@ namespace OrangeHRMTests.Tests
         public void L_AddJobTitleTest()
         {
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
+
             GenericPages.AdminPage.ClickJobDropdownButton();
             GenericPages.AdminPage.ClickJobTitlesDropdownButton();
+
+            Assert.AreEqual("Job Titles", GenericPages.AdminPage.ReturnJobTitlesText());
+
             Buttons.ClickAddButton();
             GenericPages.AdminPage.EnterJobTitleName();
             Buttons.ClickSaveButton();
@@ -266,7 +296,7 @@ namespace OrangeHRMTests.Tests
             GenericPages.BasePage.CreateEmployee();
 
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
-            GenericPages.PIMPage.ClickEmployeeListButton();
+
             GenericPages.PIMPage.EnterCreatedEmployeeNameTextBoxElement();
             GenericPages.PIMPage.ClickCreatedEmployeeFirstPosition();
             Buttons.ClickSearchButton();
@@ -275,28 +305,34 @@ namespace OrangeHRMTests.Tests
 
             GenericPages.PIMPage.ClearEmployeeNameTextBoxElement();
             GenericPages.PIMPage.EnterUnvalidEmployeeNameTextBoxElement();
+
+            Assert.AreEqual("Employee Information", GenericPages.PIMPage.ReturnImployeeInformationText());
+
             Buttons.ClickSearchButton();
 
-            Assert.AreEqual("No Records Found", GenericPages.InfoMessage.ReturnInfoMessageTextResult());
+            Assert.AreEqual("No Records Found", GenericPages.PIMPage.ReturnNoRecordsFoundText());
 
             GenericPages.BasePage.DeleteCreatedEmployee();
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
         }
 
         [Test]
         public void N_EditEmployeeDetailsTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
+
             GenericPages.PIMPage.ClickEmployeeListButton();
             Tables.ClickPencilEditButton();
+
+            Assert.AreEqual("Personal Details", GenericPages.PIMPage.ReturnPersonalDetailsHeaderTextElement());
+
             GenericPages.PIMPage.ClearFullUserName();
             GenericPages.PIMPage.EnterFullUserName();
             GenericPages.PIMPage.ClickSaveOneButton();
             GenericPages.PIMPage.ClickSaveTwoButton();
             GenericPages.PIMPage.ClickEmployeeListButton();
+
+            Assert.AreEqual("Employee Information", GenericPages.PIMPage.ReturnImployeeInformationText());
+
             GenericPages.PIMPage.EnterCreatedEmployeeNameTextBoxElement();
             GenericPages.PIMPage.ClickCreatedEmployeeFirstPosition();
             Buttons.ClickSearchButton();
@@ -305,18 +341,15 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("333", Tables.GetCellText("Last Name"));
 
             GenericPages.BasePage.DeleteCreatedEmployee();
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
         }
 
         [Test]
         public void O_SearchAdminTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.CreateEmployee();
 
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
+
             GenericPages.AdminPage.ClickUserManagementDropdownButton();
             GenericPages.AdminPage.ClickUsersDropdownButton();
             Buttons.ClickAddButton();
@@ -339,16 +372,13 @@ namespace OrangeHRMTests.Tests
             Assert.AreEqual("Personal Details", GenericPages.PIMPage.ReturnPersonalDetailsHeaderTextElement());
 
             GenericPages.BasePage.DeleteCreatedEmployee();
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
         }
 
         [Test]
         public void P_ValidateCandidateManagementTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToRecruitmentPage();
+
             GenericPages.RecruitmentPage.ClickCandidatesButton();
             Buttons.ClickAddButton();
 
@@ -367,20 +397,16 @@ namespace OrangeHRMTests.Tests
             Buttons.ClickDeleteSelectedButton();
             Buttons.ClickConfirmDeletionButton();
 
-            Assert.AreEqual("Successfully Deleted", GenericPages.InfoMessage.ReturnInfoMessageTextResult());
-
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
+            Assert.AreEqual("No Records Found", GenericPages.PIMPage.ReturnNoRecordsFoundText());
         }
 
         [Test]
         public void R_ResetPasswordTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.CreateEmployee();
 
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
+
             GenericPages.AdminPage.ClickUserManagementDropdownButton();
             GenericPages.AdminPage.ClickUsersDropdownButton();
             Buttons.ClickAddButton();
@@ -399,18 +425,18 @@ namespace OrangeHRMTests.Tests
             GenericPages.BasePage.GoToLoginPage();
             GenericPages.LoginPage.LogInToOrangeCRM();
             GenericPages.BasePage.DeleteCreatedEmployee();
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
         }
 
         [Test]
         public void S_ValidateJobTitlesTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToAdminPage();
+
             GenericPages.AdminPage.ClickJobDropdownButton();
             GenericPages.AdminPage.ClickJobTitlesDropdownButton();
+
+            Assert.AreEqual("Job Titles", GenericPages.AdminPage.ReturnJobTitlesText());
+
             Buttons.ClickAddButton();
             GenericPages.AdminPage.EnterJobTitleName();
             Buttons.ClickSaveButton();
@@ -421,27 +447,28 @@ namespace OrangeHRMTests.Tests
             Buttons.ClickDeleteSelectedButton();
             Buttons.ClickConfirmDeletionButton();
 
-            Assert.AreEqual("Successfully Deleted", GenericPages.InfoMessage.ReturnInfoMessageTextResult());
-
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
+            Assert.AreNotEqual("111", GenericPages.AdminPage.ReturnJobTitleNameTextResult());
         }
 
         [Test]
         public void T_AddCustomFieldToEmployeeProfileTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
 
             GenericPages.PIMPage.ClickConfugurationButton();
             GenericPages.PIMPage.ClickCustomFieldsButton();
+
+            Assert.AreEqual("Custom Fields", GenericPages.PIMPage.ReturnCustomFieldsText());
+
             Buttons.ClickAddButton();
             GenericPages.PIMPage.EnterFieldNameTextBoxElement();
             GenericPages.PIMPage.ChoseScreen();
             GenericPages.PIMPage.ChoseType();
             Buttons.ClickSaveButton();
             GenericPages.PIMPage.ClickEmployeeListButton();
+
+            Assert.AreEqual("Employee Information", GenericPages.PIMPage.ReturnImployeeInformationText());
+
             Tables.ClickPencilEditButton();
 
             Assert.AreEqual("111", GenericPages.PIMPage.ReturnAddedCustomFieldNameTextElement());
@@ -449,27 +476,28 @@ namespace OrangeHRMTests.Tests
             GenericPages.PIMPage.EnterCreatedCustomFieldValueTextBoxElement();
             GenericPages.PIMPage.ClickSaveTwoButton();
 
-            Assert.AreEqual("Successfully Updated", GenericPages.InfoMessage.ReturnInfoMessageTextResult());
+            Assert.AreEqual("111", GenericPages.PIMPage.ReturnAddedCustomFieldNameTextElement());
 
             GenericPages.PIMPage.ClearCreatedCustomFieldTextBoxElement();
             GenericPages.PIMPage.ClickSaveTwoButton();
+
+            Assert.AreEqual("111", GenericPages.PIMPage.ReturnAddedCustomFieldNameTextElement());
 
             GenericPages.PIMPage.ClickConfugurationButton();
             GenericPages.PIMPage.ClickCustomFieldsButton();
             Tables.ClickTrashButton();
             Buttons.ClickConfirmDeletionButton();
-
-            //GenericPages.DashboardPage.ClickArrowButton();
-            //GenericPages.LoginPage.ClickLogout();
         }
 
         [Test]
         public void U_ValidateAssignSkillToEmployeeProfileTest()
         {
-            //GenericPages.LoginPage.LogInToOrangeCRM();
-
             GenericPages.BasePage.LeftMenuNavigationPanel.GoToPIMPage();
+
             GenericPages.PIMPage.ClickEmployeeListButton();
+
+            Assert.AreEqual("Employee Information", GenericPages.PIMPage.ReturnImployeeInformationText());
+
             Tables.ClickPencilEditButton();
             GenericPages.PIMPage.ClickQualificationsButton();
             GenericPages.PIMPage.ClickAddSkillsButton();
@@ -477,11 +505,36 @@ namespace OrangeHRMTests.Tests
             DropdownExtension.ClickDropdownList("C#");
             Buttons.ClickSaveButton();
 
-            Assert.AreEqual("Successfully Saved", GenericPages.InfoMessage.ReturnInfoMessageTextResult());
             Assert.AreEqual("C#", Tables.ReturnValueOfTextFieldByName("Skill"));
 
-            //GenericPages.PIMPage.ClickSkillsTableTrashButton();
-            //Buttons.ClickConfirmDeletionButton();
+            GenericPages.PIMPage.ClickSkillsTableTrashButton();
+            Buttons.ClickConfirmDeletionButton();
+
+            GenericPages.DashboardPage.ClickArrowButton();
+            GenericPages.LoginPage.ClickLogout();
+        }
+
+        [Test]
+        public void W_ValidLoginTest()
+        {
+            GenericPages.LoginPage.EnterValidUsername();
+            GenericPages.LoginPage.EnterValidPassword();
+            GenericPages.LoginPage.ClickLoginButton();
+
+            Assert.AreEqual(DashboardPageConstants.DashboardPageUrl, GenericPages.LoginPage.GetCurrentPageUrl());
+
+            GenericPages.DashboardPage.ClickArrowButton();
+            GenericPages.LoginPage.ClickLogout();
+        }
+
+        [Test]
+        public void X_InValidLoginTest()
+        {
+            GenericPages.LoginPage.EnterInvalidUsername();
+            GenericPages.LoginPage.EnterInvalidPassword();
+            GenericPages.LoginPage.ClickLoginButton();
+
+            Assert.AreEqual("Invalid credentials", GenericPages.LoginPage.ReturnInvalidMessageTextResult());
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OrangeHRMTests.Common.Drivers;
-using OrangeHRMTests.Common.WebElements;
-using System;
 
 namespace OrangeHRMTests.Common.Extensions
 {
