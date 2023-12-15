@@ -8,7 +8,5 @@ namespace OrangeHRMTests.PageObjects.Elements
         private static string TopbarMenuButtonByName = "//nav[@role='navigation']//*[text()='{0}']";
 
         public static void ClickTopbarMenuButtonByName(string value) => new MyWebElement(By.XPath(string.Format(TopbarMenuButtonByName, value))).Click();
-
-        public static string ReturnTopbarMenuElementTextByName(string value) => new MyWebElement(By.XPath(string.Format(TopbarMenuButtonByName, value))).Text;
     }
 }
