@@ -46,7 +46,7 @@ namespace OrangeHRMTests.PageObjects.Pages
 
         public void ClickShowLeaveWithStatusTypeArrowButton() => Buttons.ClickRequieredDropDownListArrowButtonByName("Show Leave with Status");
 
-        public void ClickConfirmButton() => ConfirmButton.ClickWW();
+        public void ClickConfirmButton() => ConfirmButton.ClickWithoutWaiter();
 
         public void EnterEmployeeName() => Fields.EnterValueInInputTextField("Employee Name", "111");
 

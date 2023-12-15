@@ -19,7 +19,7 @@ namespace OrangeHRMTests.Common.WebElements
         {
             set { Waiter(); }
             get { return WebElement.Text; }
-        }//=> WebElement.Text;
+        }
 
         public bool Enabled => WebElement.Enabled;
 
@@ -40,13 +40,13 @@ namespace OrangeHRMTests.Common.WebElements
         {
             Waiter();
             WebElement.Clear();
-        }//=> WebElement.Clear();
+        }
 
-        public void SendKeys(string text) 
+        public void SendKeys(string text)
         {
             Waiter();
             WebElement.SendKeys(text);
-        }//=> WebElement.SendKeys(text);
+        }
 
         public void Submit() => WebElement.Submit();
 
@@ -65,7 +65,7 @@ namespace OrangeHRMTests.Common.WebElements
             }
         }
 
-        public void ClickWW()
+        public void ClickWithoutWaiter()
         {
             try
             {
@@ -97,6 +97,7 @@ namespace OrangeHRMTests.Common.WebElements
         public string GetValueOfClassAtrubute() => GetAttribute("class");
 
         public static WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromMilliseconds(15000));
+
         public static void Waiter() => wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='oxd-form-loader']")));
     }
 }
